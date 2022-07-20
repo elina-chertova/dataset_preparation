@@ -27,5 +27,6 @@ def move_files_to_common_folders(df_final: str, path: str, future_folder: str) -
         os.rename(path + file, future_folder + str(future_names[i]) + end)
 
 
-move_files_to_common_folders(TEST_DF_FINAL, TEST_PATH, TEST_FOLDER)
-move_files_to_common_folders(TRAIN_DF_FINAL, TRAIN_PATH, TRAIN_FOLDER)
+if __name__ == "__main__":
+    move_files_to_common_folders(TEST_DF_FINAL, TEST_PATH, TEST_FOLDER)
+    move_files_to_common_folders(TRAIN_DF_FINAL, TRAIN_PATH, TRAIN_FOLDER)

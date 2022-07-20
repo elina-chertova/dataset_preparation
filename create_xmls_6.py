@@ -13,16 +13,6 @@ TRAIN_XML_FOLDER = '/Users/elinachertova/Downloads/annotations_train/'
 ALL_NEEDED_PATHS_TEST = 'all_needed_paths_test.csv'
 ALL_NEEDED_PATHS_TRAIN = 'all_needed_paths_train.csv'
 
-if not os.path.isdir(TEST_XML_FOLDER):
-    os.mkdir(TEST_XML_FOLDER)
-
-if not os.path.isdir(TRAIN_XML_FOLDER):
-    os.mkdir(TRAIN_XML_FOLDER)
-
-df_test = pd.read_csv(DOWNLOADS_PATH + TEST_PRETRAINED)
-
-df_train = pd.read_csv(DOWNLOADS_PATH + TRAIN_PRETRAINED)
-
 
 def add_to_dict(dictionary: dict, dataframe: pd.DataFrame) -> dict:
     for _, row in dataframe.iterrows():
@@ -47,7 +37,7 @@ def write_xmls(df: pd.DataFrame, folder_path: str, all_needed_path: str) -> None
                                              row['image_path'], row['image_width'], row['image_height'],
                                              row['image_depth'],
                                              row['xmin'], row['ymin'], row['xmax'], row['ymax']]
-    # df_person = df[df['object'] == 'person'].sample(n=df_weapons.shape[0]).sort_index(axis=0)
+
     dict_ = dict()
     dict_ = add_to_dict(dict_, df_weapons)
     dict_ = add_to_dict(dict_, df_person)
@@ -62,14 +52,16 @@ def write_xmls(df: pd.DataFrame, folder_path: str, all_needed_path: str) -> None
     path_df.to_csv(DOWNLOADS_PATH + all_needed_path, index=False)
 
 
-write_xmls(df_test, TEST_XML_FOLDER, ALL_NEEDED_PATHS_TEST)
-write_xmls(df_train, TRAIN_XML_FOLDER, ALL_NEEDED_PATHS_TRAIN)
+if __name__ == "__main__":
 
-# if row['image_name'] in dictionary:
-#     dictionary[row['image_name']].append([row['image_path'], row['object'], row['image_width'],
-#                                           row['image_height'], row['image_depth'], row['xmin'],
-#                                           row['ymin'], row['xmax'], row['ymax'], row['image_name']])
-# else:
-#     dictionary[row['image_name']] = [[row['image_path'], row['object'], row['image_width'],
-#                                       row['image_height'], row['image_depth'],
-#                                       row['xmin'], row['ymin'], row['xmax'], row['ymax'], row['image_name']]]
+    if not os.path.isdir(TEST_XML_FOLDER):
+        os.mkdir(TEST_XML_FOLDER)
+
+    if not os.path.isdir(TRAIN_XML_FOLDER):
+        os.mkdir(TRAIN_XML_FOLDER)
+
+    df_test = pd.read_csv(DOWNLOADS_PATH + TEST_PRETRAINED)
+    df_train = pd.read_csv(DOWNLOADS_PATH + TRAIN_PRETRAINED)
+
+    write_xmls(df_test, TEST_XML_FOLDER, ALL_NEEDED_PATHS_TEST)
+    write_xmls(df_train, TRAIN_XML_FOLDER, ALL_NEEDED_PATHS_TRAIN)

@@ -46,6 +46,6 @@ def generate_true_coordinates(folder: str, dataset_name: str) -> None:
     df.to_csv(DOWNLOADS_PATH + dataset_name, index=False)
 
 
-generate_true_coordinates(TEST_FOLDER, TEST_PRETRAINED)
-generate_true_coordinates(TRAIN_FOLDER, TRAIN_PRETRAINED)
-#
+if __name__ == "__main__":
+    generate_true_coordinates(TEST_FOLDER, TEST_PRETRAINED)
+    generate_true_coordinates(TRAIN_FOLDER, TRAIN_PRETRAINED)

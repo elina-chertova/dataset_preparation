@@ -6,11 +6,6 @@ TEST_PATH = '/Users/elinachertova/Downloads/miem_test'
 DOWNLOADS_PATH = '/Users/elinachertova/Downloads/'
 TRAIN_FILES = os.listdir(TRAIN_PATH)
 TEST_FILES = os.listdir(TEST_PATH)
-print('train_files: ', TRAIN_FILES)
-print('test_files: ', TEST_FILES)
-
-jpg_list = []
-txt_list = []
 
 
 def create_lists_txt_jpg(list_list_jpg: list, list_list_txt: list, files_from_directory: list, path: str) -> [list,
@@ -30,13 +25,6 @@ def create_lists_txt_jpg(list_list_jpg: list, list_list_txt: list, files_from_di
             list_list_txt.append(txt_files)
 
     return list_list_jpg, list_list_txt
-
-
-jpg_test, txt_test = create_lists_txt_jpg(jpg_list, txt_list, TEST_FILES, TEST_PATH)
-
-jpg_list = []
-txt_list = []
-jpg_train, txt_train = create_lists_txt_jpg(jpg_list, txt_list, TRAIN_FILES, TRAIN_PATH)
 
 
 def create_df(jpg: list, txt: list, path: str) -> pd.DataFrame:
@@ -59,11 +47,17 @@ def create_df(jpg: list, txt: list, path: str) -> pd.DataFrame:
     return df
 
 
-data_test = create_df(jpg_test, txt_test, TEST_PATH)
-sorted_df_test = data_test.sort_values(by=['directory', 'name', 'common_name'])
+if __name__ == "__main__":
+    jpg_list = []
+    txt_list = []
+    jpg_test, txt_test = create_lists_txt_jpg(jpg_list, txt_list, TEST_FILES, TEST_PATH)
+    jpg_train, txt_train = create_lists_txt_jpg(jpg_list, txt_list, TRAIN_FILES, TRAIN_PATH)
 
-data_train = create_df(jpg_train, txt_train, TRAIN_PATH)
-sorted_df_train = data_train.sort_values(by=['directory', 'name', 'common_name'])
+    data_test = create_df(jpg_test, txt_test, TEST_PATH)
+    sorted_df_test = data_test.sort_values(by=['directory', 'name', 'common_name'])
 
-sorted_df_test.to_csv(DOWNLOADS_PATH + 'test_df.csv', index=False)
-sorted_df_train.to_csv(DOWNLOADS_PATH + 'train_df.csv', index=False)
+    data_train = create_df(jpg_train, txt_train, TRAIN_PATH)
+    sorted_df_train = data_train.sort_values(by=['directory', 'name', 'common_name'])
+
+    sorted_df_test.to_csv(DOWNLOADS_PATH + 'test_df.csv', index=False)
+    sorted_df_train.to_csv(DOWNLOADS_PATH + 'train_df.csv', index=False)

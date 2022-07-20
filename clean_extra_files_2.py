@@ -1,15 +1,3 @@
-# import unittest
-#
-#
-# class MyTestCase(unittest.TestCase):
-#     def test_something(self):
-#         self.assertEqual(True, False)  # add assertion here
-#
-#
-# if __name__ == '__main__':
-#     unittest.main()
-
-
 import pandas as pd
 from collections import Counter
 
@@ -21,8 +9,6 @@ TEST_DF_FINAL = 'test_df_final.csv'
 TRAIN_DF_FINAL = 'train_df_final.csv'
 TEST_DF_PREFINAL = 'test_df_prefinal.csv'
 TRAIN_DF_PREFINAL = 'train_df_prefinal.csv'
-
-k = 1
 
 
 def prepare_dataframe(path: str, future_path_cleared: str, future_path_count: str, cnt: int) -> int:
@@ -43,7 +29,6 @@ def prepare_dataframe(path: str, future_path_cleared: str, future_path_count: st
     final_list = [j for i in n_times for j in i]
     df['mark_to_delete'] = final_list
     final_names = []
-    # cnt = 1
     for i in n_times:
         for _ in i:
             final_names.append(cnt)
@@ -54,7 +39,10 @@ def prepare_dataframe(path: str, future_path_cleared: str, future_path_count: st
     df.to_csv(DOWNLOADS_PATH + future_path_cleared, index=False)
     return cnt
 
-cnt = prepare_dataframe(TEST_DF, TEST_DF_FINAL, TEST_DF_PREFINAL, k)
-_ = prepare_dataframe(TRAIN_DF, TRAIN_DF_FINAL, TRAIN_DF_PREFINAL, cnt)
+
+if __name__ == "__main__":
+    k = 1
+    cnt = prepare_dataframe(TEST_DF, TEST_DF_FINAL, TEST_DF_PREFINAL, k)
+    _ = prepare_dataframe(TRAIN_DF, TRAIN_DF_FINAL, TRAIN_DF_PREFINAL, cnt)
 
 
