@@ -22,8 +22,10 @@ TRAIN_DF_FINAL = 'train_df_final.csv'
 TEST_DF_PREFINAL = 'test_df_prefinal.csv'
 TRAIN_DF_PREFINAL = 'train_df_prefinal.csv'
 
+k = 1
 
-def prepare_dataframe(path: str, future_path_cleared: str, future_path_count: str) -> None:
+
+def prepare_dataframe(path: str, future_path_cleared: str, future_path_count: str, cnt: int) -> int:
     df = pd.read_csv(path)
     all_names_df = df['path_without_expansion'].tolist()
     counter_all_names_df = Counter(all_names_df)
@@ -41,7 +43,7 @@ def prepare_dataframe(path: str, future_path_cleared: str, future_path_count: st
     final_list = [j for i in n_times for j in i]
     df['mark_to_delete'] = final_list
     final_names = []
-    cnt = 1
+    # cnt = 1
     for i in n_times:
         for _ in i:
             final_names.append(cnt)
@@ -50,9 +52,9 @@ def prepare_dataframe(path: str, future_path_cleared: str, future_path_count: st
     df.to_csv(DOWNLOADS_PATH + future_path_count, index=False)
     df = df[df['mark_to_delete'] != 0]
     df.to_csv(DOWNLOADS_PATH + future_path_cleared, index=False)
+    return cnt
 
-
-prepare_dataframe(TEST_DF, TEST_DF_FINAL, TEST_DF_PREFINAL)
-prepare_dataframe(TRAIN_DF, TRAIN_DF_FINAL, TRAIN_DF_PREFINAL)
+cnt = prepare_dataframe(TEST_DF, TEST_DF_FINAL, TEST_DF_PREFINAL, k)
+_ = prepare_dataframe(TRAIN_DF, TRAIN_DF_FINAL, TRAIN_DF_PREFINAL, cnt)
 
 

@@ -2,7 +2,6 @@ from pascal_voc_writer import Writer
 import pandas as pd
 import os
 
-
 TEST_FOLDER = '/Users/elinachertova/Downloads/test/'
 TRAIN_FOLDER = '/Users/elinachertova/Downloads/train/'
 
@@ -26,22 +25,19 @@ df_train = pd.read_csv(DOWNLOADS_PATH + TRAIN_PRETRAINED)
 
 
 def add_to_dict(dictionary: dict, dataframe: pd.DataFrame) -> dict:
-    for i, row in dataframe.iterrows():
-        if row['image_name'] in dictionary:
-            dictionary[row['image_name']].append([row['image_path'], row['object'], row['image_width'],
-                                                  row['image_height'], row['image_depth'], row['xmin'],
-                                                  row['ymin'], row['xmax'], row['ymax'], row['image_name']])
-        else:
-            dictionary[row['image_name']] = [[row['image_path'], row['object'], row['image_width'],
-                                              row['image_height'], row['image_depth'],
-                                              row['xmin'], row['ymin'], row['xmax'], row['ymax'], row['image_name']]]
+    for _, row in dataframe.iterrows():
+        dictionary.setdefault(row['image_name'], []).append([row['image_path'], row['object'], row['image_width'],
+                                                             row['image_height'], row['image_depth'],
+                                                             row['xmin'], row['ymin'], row['xmax'], row['ymax'],
+                                                             row['image_name']])
+
     return dictionary
 
 
 def write_xmls(df: pd.DataFrame, folder_path: str, all_needed_path: str) -> None:
     df_weapons = df[df['object'] == 'weapon']
     lst_weapons = df_weapons['image_name'].tolist()
-    needed_lst = list(set(lst_weapons))
+    needed_lst = set(lst_weapons)
     df_person = pd.DataFrame({'path': [], 'object': [], 'object_mark': [], 'image_name': [], 'image_path': [],
                               'image_width': [], 'image_height': [], 'image_depth': [],
                               'xmin': [], 'ymin': [], 'xmax': [], 'ymax': []})
@@ -68,3 +64,12 @@ def write_xmls(df: pd.DataFrame, folder_path: str, all_needed_path: str) -> None
 
 write_xmls(df_test, TEST_XML_FOLDER, ALL_NEEDED_PATHS_TEST)
 write_xmls(df_train, TRAIN_XML_FOLDER, ALL_NEEDED_PATHS_TRAIN)
+
+# if row['image_name'] in dictionary:
+#     dictionary[row['image_name']].append([row['image_path'], row['object'], row['image_width'],
+#                                           row['image_height'], row['image_depth'], row['xmin'],
+#                                           row['ymin'], row['xmax'], row['ymax'], row['image_name']])
+# else:
+#     dictionary[row['image_name']] = [[row['image_path'], row['object'], row['image_width'],
+#                                       row['image_height'], row['image_depth'],
+#                                       row['xmin'], row['ymin'], row['xmax'], row['ymax'], row['image_name']]]

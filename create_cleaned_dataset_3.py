@@ -16,7 +16,8 @@ if not os.path.isdir(TRAIN_FOLDER):
     os.mkdir(TRAIN_FOLDER)
 
 
-def move_files_to_common_folders(df_final: str, path: str, future_folder: str) -> int:
+def move_files_to_common_folders(df_final: str, path: str, future_folder: str) -> None:
+
     df = pd.read_csv(df_final)
     list_files_to_move = df['path'].to_list()
     future_names = df['final_names'].to_list()
@@ -24,7 +25,6 @@ def move_files_to_common_folders(df_final: str, path: str, future_folder: str) -
         var = file.split('/')[-1]
         end = '_iss.txt' if var[-8:] == '_iss.txt' else '.' + var.split('.')[-1]
         os.rename(path + file, future_folder + str(future_names[i]) + end)
-    return 0
 
 
 move_files_to_common_folders(TEST_DF_FINAL, TEST_PATH, TEST_FOLDER)
