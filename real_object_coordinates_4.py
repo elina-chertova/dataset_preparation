@@ -24,12 +24,12 @@ def generate_true_coordinates(folder: str, dataset_name: str) -> None:
     k = 0
 
     for txt in list_txt:
-        img = cv2.imread(txt[:-8] + '.jpg') if txt[-8:] == '_iss.txt' else cv2.imread(txt[:-4] + '.jpg')
+        img = cv2.imread(txt[:-8] + '.jpg') if txt.endswith('_iss.txt') else cv2.imread(txt[:-4] + '.jpg')
         h, w, d = img.shape
         with open(txt, 'r') as f:
             temp = f.read().split()
-        image_path = txt[:-8] + '.jpg' if txt[-8:] == '_iss.txt' else txt[:-4] + '.jpg'
-        image_name = txt.split('/')[-1][:-8] + '.jpg' if txt[-8:] == '_iss.txt' else txt.split('/')[-1][:-4] + '.jpg'
+        image_path = txt[:-8] + '.jpg' if txt.endswith('_iss.txt') else txt[:-4] + '.jpg'
+        image_name = txt.split('/')[-1][:-8] + '.jpg' if txt.endswith('_iss.txt') else txt.split('/')[-1][:-4] + '.jpg'
 
         for i in range(0, len(temp), 5):
             x_, y_, w_, h_ = eval(temp[i + 1]), eval(temp[i + 2]), eval(temp[i + 3]), eval(temp[i + 4])
@@ -38,7 +38,7 @@ def generate_true_coordinates(folder: str, dataset_name: str) -> None:
             y1 = h * y_ - 0.5 * h * h_
             y2 = h * y_ + 0.5 * h * h_
             x_1, y_1, x_2, y_2 = int(x1), int(y1), int(x2), int(y2)
-            object_, mark = ('person', 1) if txt[-8:] == '_iss.txt' else ('weapon', 0)
+            object_, mark = ('person', 1) if txt.endswith('_iss.txt') else ('weapon', 0)
 
             df.loc[k] = [txt, object_, mark, image_name, image_path, w, h, d, x_1, y_1, x_2, y_2]
             k += 1

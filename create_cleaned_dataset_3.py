@@ -23,7 +23,7 @@ def move_files_to_common_folders(df_final: str, path: str, future_folder: str) -
     future_names = df['final_names'].to_list()
     for i, file in enumerate(list_files_to_move):
         var = file.split('/')[-1]
-        end = '_iss.txt' if var[-8:] == '_iss.txt' else '.' + var.split('.')[-1]
+        end = '_iss.txt' if var.endswith('_iss.txt') else '.' + var.split('.')[-1]
         os.rename(path + file, future_folder + str(future_names[i]) + end)
 
 

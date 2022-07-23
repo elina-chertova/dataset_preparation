@@ -16,9 +16,9 @@ def create_lists_txt_jpg(list_list_jpg: list, list_list_txt: list, files_from_di
         if file != '.DS_Store':
             directory = os.listdir(path + '/' + file + '/obj_train_data')
             for name in directory:
-                if name.split('.')[1] == 'jpg':
+                if name.endswith('jpg'):
                     jpg_files.append(file + '/obj_train_data/' + name)
-                elif name.split('.')[1] == 'txt':
+                elif name.endswith('txt'):
                     txt_files.append(file + '/obj_train_data/' + name)
 
             list_list_jpg.append(jpg_files)
