@@ -3,12 +3,12 @@ import os
 import pandas as pd
 import re
 
-TEST_FOLDER = '/Users/elinachertova/Downloads/test/'
-TRAIN_FOLDER = '/Users/elinachertova/Downloads/train/'
-TEST_XML_FOLDER = '/Users/elinachertova/Downloads/annotations_test/'
-TRAIN_XML_FOLDER = '/Users/elinachertova/Downloads/annotations_train/'
+TEST_FOLDER = '/test_new/'
+TRAIN_FOLDER = '/train_new/'
+TEST_XML_FOLDER = '/annotations_test/'
+TRAIN_XML_FOLDER = '/annotations_train/'
 
-DOWNLOADS_PATH = '/Users/elinachertova/Downloads/'
+DOWNLOADS_PATH = '/Downloads/'
 TEST_PRETRAINED = 'test_pretrained.csv'
 TRAIN_PRETRAINED = 'train_pretrained.csv'
 
