@@ -2,14 +2,14 @@ from pascal_voc_writer import Writer
 import pandas as pd
 import os
 
-TEST_FOLDER = '/Users/elinachertova/Downloads/test/'
-TRAIN_FOLDER = '/Users/elinachertova/Downloads/train/'
+TEST_FOLDER = '/test_new/'
+TRAIN_FOLDER = '/train_new/'
 
-DOWNLOADS_PATH = '/Users/elinachertova/Downloads/'
+DOWNLOADS_PATH = '/Downloads/'
 TEST_PRETRAINED = 'test_pretrained.csv'
 TRAIN_PRETRAINED = 'train_pretrained.csv'
-TEST_XML_FOLDER = '/Users/elinachertova/Downloads/annotations_test/'
-TRAIN_XML_FOLDER = '/Users/elinachertova/Downloads/annotations_train/'
+TEST_XML_FOLDER = '/annotations_test/'
+TRAIN_XML_FOLDER = '/annotations_train/'
 ALL_NEEDED_PATHS_TEST = 'all_needed_paths_test.csv'
 ALL_NEEDED_PATHS_TRAIN = 'all_needed_paths_train.csv'
 
