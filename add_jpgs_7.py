@@ -1,9 +1,9 @@
 import os
 import pandas as pd
 
-DOWNLOADS_PATH = '/Users/elinachertova/Downloads/'
-TEST_FOLDER = DOWNLOADS_PATH + 'test/'
-TRAIN_FOLDER = DOWNLOADS_PATH + 'train/'
+DOWNLOADS_PATH = '/Downloads/'
+TEST_FOLDER = DOWNLOADS_PATH + 'test_new/'
+TRAIN_FOLDER = DOWNLOADS_PATH + 'train_new/'
 TEST_JPG_FOLDER = DOWNLOADS_PATH + 'jpg_test/'
 TRAIN_JPG_FOLDER = DOWNLOADS_PATH + 'jpg_train/'
 ALL_NEEDED_PATHS_TEST = 'all_needed_paths_test.csv'
