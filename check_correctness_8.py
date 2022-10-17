@@ -1,11 +1,11 @@
 from pathlib import Path
 
 
-TEST_JPG_FOLDER = '/Users/elinachertova/Downloads/jpg_test/'
-TRAIN_JPG_FOLDER = '/Users/elinachertova/Downloads/jpg_train/'
+TEST_JPG_FOLDER = '/jpg_test/'
+TRAIN_JPG_FOLDER = '/jpg_train/'
 
-TEST_XML_FOLDER = '/Users/elinachertova/Downloads/annotations_test/'
-TRAIN_XML_FOLDER = '/Users/elinachertova/Downloads/annotations_train/'
+TEST_XML_FOLDER = '/annotations_test/'
+TRAIN_XML_FOLDER = '/annotations_train/'
 
 
 test_jpg = sorted(Path(TEST_JPG_FOLDER).glob('*.jpg'))
