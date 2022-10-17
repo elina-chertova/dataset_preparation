@@ -1,13 +1,13 @@
 import os
 import pandas as pd
 
-DOWNLOADS_PATH = '/Users/elinachertova/Downloads/'
+DOWNLOADS_PATH = '/Downloads/'
 TEST_DF_FINAL = DOWNLOADS_PATH + 'test_df_final.csv'
 TRAIN_DF_FINAL = DOWNLOADS_PATH + 'train_df_final.csv'
-TEST_FOLDER = '/Users/elinachertova/Downloads/test/'
-TRAIN_FOLDER = '/Users/elinachertova/Downloads/train/'
-TRAIN_PATH = '/Users/elinachertova/Downloads/miem_train/'
-TEST_PATH = '/Users/elinachertova/Downloads/miem_test/'
+TEST_FOLDER = 'test_new/'
+TRAIN_FOLDER = 'train_new/'
+TRAIN_PATH = 'train/'
+TEST_PATH = 'test/'
 
 if not os.path.isdir(TEST_FOLDER):
     os.mkdir(TEST_FOLDER)
