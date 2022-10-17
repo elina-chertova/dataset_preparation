@@ -1,6 +1,6 @@
 import pandas as pd
 
-DOWNLOADS_PATH = '/Users/elinachertova/Downloads/'
+DOWNLOADS_PATH = '/Downloads/'
 TEST_PRETRAINED = 'test_pretrained.csv'
 TRAIN_PRETRAINED = 'train_pretrained.csv'
 
