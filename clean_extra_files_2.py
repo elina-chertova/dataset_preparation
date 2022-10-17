@@ -2,7 +2,7 @@ import pandas as pd
 from collections import Counter
 
 
-DOWNLOADS_PATH = '/Users/elinachertova/Downloads/'
+DOWNLOADS_PATH = '/Downloads/'
 TEST_DF = DOWNLOADS_PATH + 'test_df.csv'
 TRAIN_DF = DOWNLOADS_PATH + 'train_df.csv'
 TEST_DF_FINAL = 'test_df_final.csv'
