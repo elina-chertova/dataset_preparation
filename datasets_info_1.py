@@ -1,9 +1,9 @@
 import os
 import pandas as pd
 
-TRAIN_PATH = '/Users/elinachertova/Downloads/miem_train'
-TEST_PATH = '/Users/elinachertova/Downloads/miem_test'
-DOWNLOADS_PATH = '/Users/elinachertova/Downloads/'
+TRAIN_PATH = 'train'
+TEST_PATH = 'test'
+DOWNLOADS_PATH = '/Downloads/'
 TRAIN_FILES = os.listdir(TRAIN_PATH)
 TEST_FILES = os.listdir(TEST_PATH)
 
@@ -51,6 +51,9 @@ if __name__ == "__main__":
     jpg_list = []
     txt_list = []
     jpg_test, txt_test = create_lists_txt_jpg(jpg_list, txt_list, TEST_FILES, TEST_PATH)
+    
+    jpg_list = []
+    txt_list = []
     jpg_train, txt_train = create_lists_txt_jpg(jpg_list, txt_list, TRAIN_FILES, TRAIN_PATH)
 
     data_test = create_df(jpg_test, txt_test, TEST_PATH)
